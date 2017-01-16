@@ -13,10 +13,10 @@ public class User implements Serializable{
 
 	private int id;
 	
-	private String firstname;
-	private String lastname;
+	private String prenom;
+	private String nom;
 	
-	private String pwd;
+	private String mdp;
 	private String login;
 	
 	private String token;
@@ -25,16 +25,16 @@ public class User implements Serializable{
 		return id;
 	}
 
-	public String getFirstname() {
-		return firstname;
+	public String getPrenom() {
+		return prenom;
 	}
 
-	public String getLastname() {
-		return lastname;
+	public String getNom() {
+		return nom;
 	}
 
-	public String getPassword() {
-		return pwd;
+	public String getMdp() {
+		return mdp;
 	}
 
 	public String getLogin() {
@@ -49,16 +49,16 @@ public class User implements Serializable{
 		this.id = id;
 	}
 
-	public void setFirstname(String firstname) {
-		this.firstname = firstname;
+	public void setPrenom(String prenom) {
+		this.prenom = prenom;
 	}
 
-	public void setLastname(String lastname) {
-		this.lastname = lastname;
+	public void setNom(String nom) {
+		this.nom = nom;
 	}
 
-	public void setPassword(String password) {
-		this.pwd = password;
+	public void setMdp(String mdp) {
+		this.mdp = mdp;
 	}
 
 	public void setLogin(String login) {
@@ -68,6 +68,7 @@ public class User implements Serializable{
 	public void setToken(String token) {
 		this.token = token;
 	}
+
 
 
 }
