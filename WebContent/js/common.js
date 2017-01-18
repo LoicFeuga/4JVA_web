@@ -1,0 +1,1 @@
+var REST = "./Index/rest/";
