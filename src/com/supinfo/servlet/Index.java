@@ -45,21 +45,18 @@ public class Index extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		dao.getUsers();
+		dao.getCours();
 
 		String action = (String)request.getParameter("action");
 		System.out.println("\nACTION : "+action);
 		if("go_signup".equals(action)){
 			request.setAttribute("login", false);
 			System.out.println("\n request sent");
-			request.getRequestDispatcher("/jsp/signup.jsp").forward(request, response);
-			
-		}else if("go_login".equals(action)){
-			request.setAttribute("login", false);
-			request.getRequestDispatcher("/jsp/login.jsp").forward(request, response);
-			
+			request.getRequestDispatcher("/jsp/signup.jsp").forward(request, response);			
+		}else if("go_cours".equals(action)){
+			request.setAttribute("courses", dao.getCours());
+			request.getRequestDispatcher("/jsp/cours.jsp").forward(request, response);			
 		}else {
-
 			request.setAttribute("login", false);
 			request.getRequestDispatcher("/jsp/login.jsp").forward(request, response);
 		}
