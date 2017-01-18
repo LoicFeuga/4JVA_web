@@ -1,8 +1,12 @@
 function goLogin(){
 	//$("#form_signup").animate({"margin-left":"1000px"},1000);
+	$("#form_signup").html("");
 	addDataToForm("go_login","#form_signup");
 	
+	setTimeout(function(){
+		
 	$("#form_signup").submit();
+	},1000);
 }
 function login(){
 		
@@ -37,6 +41,7 @@ function addDataToForm(val,idForm){
 	var input = $("<input>")
     .attr("type", "hidden")
     .attr("name", "action").val(val);
+
 
 	$(idForm).append($(input));
 }

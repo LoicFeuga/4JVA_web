@@ -29,7 +29,7 @@
     
     	
 	
-			<form id="form_signup" action="Index" method="POST" class="row form_signup">
+			<form id="form_signup" action="Index" method="GET" class="row form_signup">
 				<div class="col s12">
 					<div class="row">
 						<h1 class="flow-text">Sup Courses</h1>

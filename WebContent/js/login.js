@@ -1,5 +1,7 @@
 function goSignup(){
 	//$("#form_signup").animate({"margin-left":"-1000px"},1000);
+
+	$("#form_signup").html("");
 	addDataToForm("go_signup","#form_signup");
 	
 	//setTimeout(function(){
@@ -40,7 +42,7 @@ function addDataToForm(val,idForm){
 	var input = $("<input>")
     .attr("type", "hidden")
     .attr("name", "action").val(val);
-
+	
 	$(idForm).append($(input));
 }
 
