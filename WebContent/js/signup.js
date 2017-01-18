@@ -1,14 +1,11 @@
-function goSignup(){
-	//$("#form_signup").animate({"margin-left":"-1000px"},1000);
-	addDataToForm("go_signup","#form_signup");
+function goLogin(){
+	//$("#form_signup").animate({"margin-left":"1000px"},1000);
+	addDataToForm("go_login","#form_signup");
 	
-	//setTimeout(function(){
-		
-		$("#form_signup").submit();
-	//},1000);
+	$("#form_signup").submit();
 }
 function login(){
-	
+		
 	addDataToForm("login","#form_signup");
 		
 	//$("#form_signup").submit();

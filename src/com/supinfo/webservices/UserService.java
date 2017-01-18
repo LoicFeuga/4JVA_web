@@ -10,6 +10,7 @@ import javax.ws.rs.Produces;
 import com.supinfo.interfaces.InterfacesDao;
 import com.supinfo.servlet.Index;
 
+
 @WebService
 @Path("/users")
 public class UserService{
@@ -26,7 +27,7 @@ public class UserService{
     	
     	//Boolean logged = true;
     	Boolean logged = dao.login(login, mdp);
-    	
+    	System.out.println(logged);
     	return logged == null ? "false" : logged+"";
 
 

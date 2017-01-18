@@ -2,11 +2,12 @@ package com.supinfo.interfaces;
 
 import java.util.List;
 
+import javax.ejb.Local;
 import javax.ejb.Remote;
 
 import com.supinfo.entity.User;
 
-@Remote
+@Local
 public interface InterfacesDao {
 
 	public boolean login(String login, String mdp);
