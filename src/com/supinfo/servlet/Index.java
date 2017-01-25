@@ -61,12 +61,14 @@ public class Index extends HttpServlet {
 			request.setAttribute("login", false);
 			System.out.println("\n request sent");
 			request.getRequestDispatcher("/jsp/signup.jsp").forward(request, response);
-		} else if ("go_cours".equals(action)) {
+		} 
+		/*else if ("go_cours".equals(action)) {
 			List<Cours> list = (List<Cours>) dao.getCours();
 
 			request.setAttribute("courses", list);
 			request.getRequestDispatcher("/jsp/cours.jsp").forward(request, response);
-		} else {
+		} */
+		else {
 			request.getRequestDispatcher("/jsp/login.jsp").forward(request, response);
 		}
 
@@ -83,27 +85,41 @@ public class Index extends HttpServlet {
 		String mdp = (String) request.getParameter("mdp");
 		String action = (String) request.getParameter("action");
 
-		// mdp = Index.aes_encrypt(mdp);
+		mdp = Index.aes_encrypt(mdp);
 		System.out.println(action);
 
+		//On se log
 		if ("login".equals(action)) {
-			Boolean ret = dao.login(login, mdp);
-			if (!ret) {
+			
+			Boolean logged  = dao.login(login, mdp);
+			
+			if (!logged) {
 				request.setAttribute("login", false);
 				request.getRequestDispatcher("/jsp/login.jsp").forward(request, response);
+			}else {
+				List<Cours> list = (List<Cours>) dao.getCours();
+				request.setAttribute("courses", list);
+				request.getRequestDispatcher("/jsp/cours.jsp").forward(request, response);
 			}
 
-		} else if ("signup".equals(action)) {
+		} 
+		//On s'inscrit
+		else if ("signup".equals(action)) {
 
 			String nom = (String) request.getParameter("nom");
 			String prenom = (String) request.getParameter("prenom");
-			Boolean ret = dao.signup(login, mdp, nom, prenom);
-			if (!ret) {
-				System.out.println("signup_go_login");
+			
+			Boolean signed = dao.signup(login, mdp, nom, prenom);
+			
+			if (!signed) {
+				
 				request.setAttribute("login", false);
 				request.getRequestDispatcher("/jsp/login.jsp").forward(request, response);
+				
 			} else {
-				List<Cours> list =  dao.getCours();
+
+				List<Cours> list = (List<Cours>) dao.getCours();
+				request.setAttribute("courses", list);
 				request.getRequestDispatcher("/jsp/cours.jsp").forward(request, response);
 			}
 		}
