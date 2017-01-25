@@ -29,7 +29,7 @@
     
     	
 	
-			<form id="form_signup" action="Index" method="GET" class="row form_signup">
+			<form id="form_signup" action="Index" method="POST" class="row form_signup">
 				<div class="col s12">
 					<div class="row">
 						<h1 class="flow-text">Sup Courses</h1>
@@ -59,14 +59,16 @@
 					</div>			
 									
 					<div class="row">
-						<a class="waves-effect waves-light btn-large" onclick='login()'><i class="material-icons left">send</i>Signup</a>
+						<a class="waves-effect waves-light btn-large" id='signup'><i class="material-icons left">send</i>Signup</a>
 					</div>
 					
+				        
+				    <input id="action" name="action" type="text" style="display:none" value="signup"/>
 					
 					<div class="row">
 						<div class="col s12">
 						<h2 class="flow-text">Vous avez déjà un compte ?</h2>
-						<a class="waves-effect" onclick='goLogin()'><i class="material-icons left">forward</i>Login</a>
+						<a class="waves-effect" id='goLogin'><i class="material-icons left">forward</i>Login</a>
 					</div>
 					</div>
 				</div>

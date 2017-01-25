@@ -9,26 +9,54 @@ function goSignup(){
 		$("#form_signup").submit();
 	//},1000);
 }
+
+$("#goSignup").click(function(e){
+	$("#form_signup").attr('method',"GET");
+	$("#action").val("go_signup");
+	$("#form_signup").submit();
+});
 function login(){
 	
 	addDataToForm("login","#form_signup");
 		
 	//$("#form_signup").submit();
 	
-	var login = document.querySelector("#login").value;
-	var mdp = document.querySelector("#mdp").value; 
-	
-	
-	$.post(REST+"users/login",
-		{
-			login : login ,
-			mdp : mdp,
-		},function(e){
-			console.log('result:'+ e);
-		});
+	//var login = document.querySelector("#login").value;
+	//var mdp = document.querySelector("#mdp").value; 
 
+//	$.soap({
+//	    url: REST+'UserServiceService/UserService/',
+//	    method: 'login',
+//
+//	    data: {
+//	        log: 'Remy Blom',
+//	        mdp: 'Hi!'
+//	    },
+//
+//	    success: function (e) {
+//	        // do stuff with soapResponse
+//	        // if you want to have the response as JSON use soapResponse.toJSON();
+//	        // or soapResponse.toString() to get XML string
+//	        // or soapResponse.toXML() to get XML DOM
+//	    	console.log(e);
+//	    	console.log(e.toString());
+//	    	console.log(e.toXML());
+//	    },
+//	    error: function (SOAPResponse) {
+//	    	console.log(SOAPResponse);
+//	    }
+//	});
+//	
+//	 var pl = new SOAPClientParameters();
+//	 pl.add("log", login);
+//	 pl.add("mdp", mdp);
+//	 
+//	 SOAPClient.invoke(REST+'UserServiceService/UserService', "login", pl, true, function(e){
+//		 console.log(e);
+//	 });
 	
-	return false;
+	
+//return false;
 	
 }
 

@@ -27,12 +27,12 @@
 
     <body>
     
-    	
 	
-			<form id="form_signup" action="Index" method="GET" class="row form_signup">
+			<form id="form_signup" action="Index" method="POST" class="row form_signup">
 				<div class="col s12">
 					<div class="row">
-						<h1 class="flow-text">Sup Courses</h1>
+						<h1 class="flow-text">Sup Courses
+    	<%= request.getAttribute("login") %></h1>
 					</div>
 					<!-- Login -->
 					<div class="row">
@@ -47,17 +47,19 @@
 				        </div>
 				        
 				        
+				        <input id="action" name="action" type="text" style="display:none" value="login"/>
+				        
 					</div>			
 									
 					<div class="row">
-						<a class="waves-effect waves-light btn-large" onclick='login()'><i class="material-icons left">send</i>Login</a>
+						<button type="submit" class="waves-effect waves-light btn-large"><i class="material-icons left">send</i>Login</button>
 					</div>
 					
 					
-					<div class="row">
+					<div  class="row">
 						<div class="col s12">
 						<h2 class="flow-text">Pas encore de compte ?</h2>
-						<a class="waves-effect" onclick='goSignup()'><i class="material-icons left">forward</i>Sign up</a>
+						<a id="goSignup" class="waves-effect"><i class="material-icons left">forward</i>Sign up</button>
 					</div>
 					</div>
 				</div>
@@ -68,6 +70,8 @@
 	  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"></script>
    
  		<script src="<%=request.getContextPath()%>/js/common.js"></script>
+ 		<script src="<%=request.getContextPath()%>/js/soapclient.js"></script>
+ 		<script src="<%=request.getContextPath()%>/js/soap.js"></script>
  		<script src="<%=request.getContextPath()%>/js/login.js"></script>
     </body>
 

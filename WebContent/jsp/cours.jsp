@@ -2,7 +2,8 @@
 	pageEncoding="ISO-8859-1"%>
 	<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page import="java.util.List" %>
-<%@ page import="com.supinfo.entity.*" %>
+<%@ page import="java.util.ArrayList" %>
+<%@ page import="com.supinfo.entity.Cours" %>
 	
     <!DOCTYPE html5>
     <html>
@@ -17,7 +18,7 @@
 		<style type="text/css">
 		    <%@include file="../css/material-icons.css" %>
 		    <%@include file="../css/roboto.css" %>
-		    <%@include file="../css/index.css" %>
+		    <%@include file="../css/courses.css" %>
 		</style>
 		
 		        
@@ -28,16 +29,30 @@
     </head>
 
     <body>
+		    <% 	
+	    		List<Cours> courses = new ArrayList<Cours>();
+	    
+				if((List<Object>) request.getAttribute("courses") != null){
+					courses = (List<Cours>) request.getAttribute("courses");
+				}
+						
+			%>
     	
-    	
-		<% List<Cours> courses = (List<Cours>)request.getAttribute("courses");
-		int i; 
-		for(i = 0; i < courses.size();i++){
-			out.print(courses.get(i).getLibelle());
-			
-		}
+    	  <nav class="teal lighten-3" style="">
+		    <div class="nav-wrapper">
+		      <a href="#" class="brand-logo">Supinfo courses</a>
+		      <ul id="nav-mobile" class="right hide-on-med-and-down">		
 		
-		%>
+			<c:forEach items="${courses}" var="cours">
+			    <li>
+			       <a href="coll.html"> <c:out value="${cours.libelle}"/></a>
+			    </li>
+			</c:forEach>
+		      </ul>
+		    </div>
+		  </nav>
+        
+    	
 		    	
 	
 

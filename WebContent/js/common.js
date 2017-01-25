@@ -1,1 +1,1 @@
-var REST = "./Index/rest/";
+var REST = "http://localhost:8080/";
