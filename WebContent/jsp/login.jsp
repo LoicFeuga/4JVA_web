@@ -27,12 +27,16 @@
 
     <body>
     
+    		<% Boolean log = (Boolean) request.getAttribute("login"); %>
+    	
+    		<c:if test="${login == false}">
+    			Wrong password
+    		</c:if>
 	
 			<form id="form_signup" action="Index" method="POST" class="row form_signup">
 				<div class="col s12">
 					<div class="row">
-						<h1 class="flow-text">Sup Courses
-    	<%= request.getAttribute("login") %></h1>
+						<h1 class="flow-text">Sup Courses</h1>
 					</div>
 					<!-- Login -->
 					<div class="row">

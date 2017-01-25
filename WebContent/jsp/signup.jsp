@@ -36,22 +36,23 @@
 					</div>
 					<!-- Login -->
 					<div class="row">
-						<div class="input-field col s12">
-				          <input id="login" name="login" type="text" class="validate">
-				          <label for="login" style="text-align:left">Login</label>
+						<div class="input-field col s6">
+				          <input id="login" name="login" type="text" class="validate" required>
+				          <label for="login" style="text-align:left">Login</label>				          
 				        </div>
 				        
-						<div class="input-field col s12">
-				          <input id="mdp" name="mdp" type="password" class="validate">
+				        <div class="input-field col s6">				        
+				          <input id="mdp" name="mdp" type="password" class="validate" required>
 				          <label for="mdp" style="text-align:left">Mot de passe</label>
 				        </div>
-				        <div class="input-field col s12">
-				          <input id="prenom" name="prenom" type="text" class="validate">
+				         
+				        <div class="input-field col s6">
+				          <input id="prenom" name="prenom" type="text" class="validate" required>
 				          <label for="prenom" style="text-align:left">Prénom</label>
 				        </div>
 				        
-						<div class="input-field col s12">
-				          <input id="nom" name="nom" type="password" class="validate">
+						<div class="input-field col s6">
+				          <input id="nom" name="nom" type="text" class="validate" required>
 				          <label for="nom" style="text-align:left">Nom</label>
 				        </div>
 				        
