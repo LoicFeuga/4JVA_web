@@ -24,6 +24,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.supinfo.entity.Cours;
 import com.supinfo.entity.User;
 import com.supinfo.interfaces.InterfacesDao;
+import com.supinfo.mock.DaoMock;
 
 /**
  * Servlet implementation class ServletTest
@@ -34,12 +35,14 @@ public class Index extends HttpServlet {
 
 	@EJB
 	InterfacesDao dao;
+	DaoMock daoMock;
 
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
 	public Index() {
 		super();
+		daoMock = new DaoMock();
 
 	}
 
@@ -50,24 +53,18 @@ public class Index extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		
-		if(dao.getCours().size() == 0){
-			dao.initCours();
-		}
+		//à décommenter après car ça permet d'initialiser 
+		//if(dao.getCours().size() == 0){
+		//	dao.initCours();
+		//}
 		
 
 		String action = (String) request.getParameter("action");
 
 		if ("go_signup".equals(action)) {
 			request.setAttribute("login", false);
-			System.out.println("\n request sent");
 			request.getRequestDispatcher("/jsp/signup.jsp").forward(request, response);
 		} 
-		/*else if ("go_cours".equals(action)) {
-			List<Cours> list = (List<Cours>) dao.getCours();
-
-			request.setAttribute("courses", list);
-			request.getRequestDispatcher("/jsp/cours.jsp").forward(request, response);
-		} */
 		else {
 			request.getRequestDispatcher("/jsp/login.jsp").forward(request, response);
 		}
@@ -86,18 +83,22 @@ public class Index extends HttpServlet {
 		String action = (String) request.getParameter("action");
 
 		mdp = Index.aes_encrypt(mdp);
+		
+		
 		System.out.println(action);
 
 		//On se log
 		if ("login".equals(action)) {
 			
-			Boolean logged  = dao.login(login, mdp);
+			//Boolean logged  = dao.login(login, mdp);
+			Boolean logged  = daoMock.login(login, mdp);
 			
 			if (!logged) {
 				request.setAttribute("login", false);
 				request.getRequestDispatcher("/jsp/login.jsp").forward(request, response);
 			}else {
-				List<Cours> list = (List<Cours>) dao.getCours();
+				//List<Cours> list = (List<Cours>) dao.getCours();
+				List<Cours> list = (List<Cours>) daoMock.getCours();
 				request.setAttribute("courses", list);
 				request.getRequestDispatcher("/jsp/cours.jsp").forward(request, response);
 			}
@@ -109,7 +110,8 @@ public class Index extends HttpServlet {
 			String nom = (String) request.getParameter("nom");
 			String prenom = (String) request.getParameter("prenom");
 			
-			Boolean signed = dao.signup(login, mdp, nom, prenom);
+			//Boolean signed = dao.signup(login, mdp, nom, prenom);
+			Boolean signed = daoMock.signup(login, mdp, nom, prenom);
 			
 			if (!signed) {
 				
@@ -118,12 +120,14 @@ public class Index extends HttpServlet {
 				
 			} else {
 
-				List<Cours> list = (List<Cours>) dao.getCours();
+				//List<Cours> list = (List<Cours>) dao.getCours();
+				List<Cours> list = (List<Cours>) daoMock.getCours();
+				
 				request.setAttribute("courses", list);
 				request.getRequestDispatcher("/jsp/cours.jsp").forward(request, response);
 			}
 		}
-		;
+		
 
 		// doGet(request, response);
 	}
