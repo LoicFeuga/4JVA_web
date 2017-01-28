@@ -27,10 +27,11 @@
 
     <body>
     
-    		<% Boolean log = (Boolean) request.getAttribute("login"); %>
-    	
+    		
     		<c:if test="${login == false}">
-    			Wrong password
+    			<div class="row form_signup">
+	    			Mauvaise combinaison id/password    			
+    			</div>
     		</c:if>
 	
 			<form id="form_signup" action="Index" method="POST" class="row form_signup">

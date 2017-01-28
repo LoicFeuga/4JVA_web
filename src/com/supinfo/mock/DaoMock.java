@@ -3,6 +3,7 @@ package com.supinfo.mock;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.sun.tools.xjc.model.SymbolSpace;
 import com.supinfo.entity.Cours;
 import com.supinfo.entity.User;
 
@@ -15,8 +16,8 @@ public class DaoMock {
 		allUsers = new ArrayList<User>();
 		allUsers.add(new User("loic","loicmdp","Feuga","Loïc"));
 		allUsers.add(new User("aziz","azizmdp","Liloudini","Aziz"));
-		allUsers.add(new User("loic","loicmdp","Diakite","Mohamed"));
-		allUsers.add(new User("loic","loicmdp","Tamakloe","Stephan"));
+		allUsers.add(new User("mohamed","mohamedmdp","Diakite","Mohamed"));
+		allUsers.add(new User("stephan","stephanmdp","Tamakloe","Stephan"));
 		
 		allCours = new ArrayList<Cours>();
 		allCours.add(new Cours("4VTZ","Virtualization",""));
@@ -29,7 +30,9 @@ public class DaoMock {
 	public boolean login(String login, String mdp){
 		for (int i = 0; i < allUsers.size(); i++) {
 			User each = allUsers.get(i);
-			if(each.getLogin().equals(login) && each.getMdp() == mdp){
+
+
+			if(each.getLogin().equals(login) && each.getMdp().equals(mdp)){
 				return true;
 			}
 		}

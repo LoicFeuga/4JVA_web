@@ -5,3 +5,15 @@ body {
 	margin:0;
 	padding:0;
 }
+
+.cours{
+	padding:10px;
+	margin-top:20px;
+	height:100px;
+	display:flex;
+	justify-content:center;
+	align-items:center;
+	border:grey 1px solid;
+  	box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+
+}

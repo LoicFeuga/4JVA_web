@@ -82,11 +82,8 @@ public class Index extends HttpServlet {
 		String mdp = (String) request.getParameter("mdp");
 		String action = (String) request.getParameter("action");
 
-		mdp = Index.aes_encrypt(mdp);
+		//mdp = Index.aes_encrypt(mdp);
 		
-		
-		System.out.println(action);
-
 		//On se log
 		if ("login".equals(action)) {
 			

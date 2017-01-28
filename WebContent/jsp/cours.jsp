@@ -40,24 +40,30 @@
     	
     	  <nav class="teal lighten-3" style="">
 		    <div class="nav-wrapper">
-		      <a href="#" class="brand-logo">Supinfo courses</a>
+		      <a href="#" class="brand-logo center">Supinfo courses</a>
 		      <ul id="nav-mobile" class="right hide-on-med-and-down">		
 		
-			<c:forEach items="${courses}" var="cours">
-			    <li>
-			       <a href="coll.html"> <c:out value="${cours.libelle}"/></a>
-			    </li>
-			</c:forEach>
+				<li><a href="Index">Déconnexion</a></li>
+			
 		      </ul>
 		    </div>
 		  </nav>
         
     	
-		    	
-	
-
-
+			<div class="container">
+			<div class="row">
 			
+			<h1>Passez tous vos cours </h1>
+			
+			<c:forEach items="${courses}" var="cours">
+			    <div class="col s3" >
+			    <div class="cours"><c:out value="${cours.libelle}"/></div>
+			    </div>
+			</c:forEach>
+
+			</div>
+
+			</div>
 
 	  <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
 	  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"></script>
