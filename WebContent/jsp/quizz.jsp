@@ -25,7 +25,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
 
-        <title>Cours</title>
+        <title>Quizz</title>
     </head>
 
     <body>
@@ -53,7 +53,7 @@
 			<div class="container">
 				<div class="row">
 				
-					<h1>Passez tous vos cours </h1>
+					<h1>Passez le quizz</h1>
 					
 					<c:forEach items="${courses}" var="cours">
 					    <div class="col s3">					    	

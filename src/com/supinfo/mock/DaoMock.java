@@ -30,8 +30,6 @@ public class DaoMock {
 	public boolean login(String login, String mdp){
 		for (int i = 0; i < allUsers.size(); i++) {
 			User each = allUsers.get(i);
-
-
 			if(each.getLogin().equals(login) && each.getMdp().equals(mdp)){
 				return true;
 			}

@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:h="http://java.sun.com/jsf/html"
+	  xmlns:ui="http://java.sun.com/jsf/facelets"
+	  xmlns:f="http://java.sun.com/jsf/core"
+	  xmlns:c="http://xmlns.jcp.org/jstl/core">
+<head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Signup</title>
+		<link rel="icon" type="image/png" href="http://supinfo.com/favicon.png" />
+	
+  		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.min.css" />
+		<link rel="stylesheet" href="css/material-icons.css"/>
+		<link rel="stylesheet" href="css/roboto.css"/>
+		<link rel="stylesheet" href="css/index.css"/>
+</head>
+<body>
+
+	<h:form class="row form_signup">
+		<div class="col s12">
+			<div class="row">
+				<h1 class="flow-text">Sup Courses</h1>
+			</div>
+			
+			<div class="row">
+				<div class="input-field col s6">
+		          <h:inputText id="login" value="#{user.login}" class="validate" />
+		          <label for="login" style="text-align:left">Login</label>
+		        </div>
+			
+
+			<div class="input-field col s6">
+	          <h:inputText id="mdp" value="#{user.mdp}" class="validate" />
+	          <label for="mdp" style="text-align:left">Mot de passe</label>
+	        </div>
+	       	
+	       	<div class="input-field col s6">
+	          <h:inputText id="prenom" value="#{user.prenom}" class="validate" />
+	          <label for="prenom" style="text-align:left">Prénom</label>
+	        </div>
+	        
+	        <div class="input-field col s6">
+	          <h:inputText id="nom" value="#{user.nom}" class="validate" />
+	          <label for="nom" style="text-align:left">Nom</label>
+	        </div>
+	        
+			</div>
+	        
+	        <div class="row">
+				<h:commandButton action="#{user.signup}" value="Signup" class="waves-effect waves-light btn-large">
+					<i class="material-icons left">send</i>
+				</h:commandButton>
+			</div>
+			
+			
+			<div class="row">
+				<div class="col s12">
+				<h2 class="flow-text">Vous avez déjà un compte ?</h2>
+				<h:link outcome="login" value="Login" class="waves-effect waves-light">
+					<i class="material-icons left">send</i>
+				</h:link>				
+			</div>
+			
+			</div>
+			
+					
+		</div>
+	</h:form>
+
+	
+	  <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+	  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"></script>
+</body>
+</html>

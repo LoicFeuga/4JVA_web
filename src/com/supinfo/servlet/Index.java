@@ -15,6 +15,8 @@ import javax.crypto.NoSuchPaddingException;
 import javax.crypto.SecretKey;
 import javax.crypto.spec.SecretKeySpec;
 import javax.ejb.EJB;
+import javax.faces.context.ExternalContext;
+import javax.faces.context.FacesContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -61,13 +63,9 @@ public class Index extends HttpServlet {
 
 		String action = (String) request.getParameter("action");
 
-		if ("go_signup".equals(action)) {
-			request.setAttribute("login", false);
-			request.getRequestDispatcher("/jsp/signup.jsp").forward(request, response);
-		} 
-		else {
+
 			request.getRequestDispatcher("/jsp/login.jsp").forward(request, response);
-		}
+		
 
 	}
 
@@ -129,6 +127,16 @@ public class Index extends HttpServlet {
 		// doGet(request, response);
 	}
 
+	public static void redirect(String xml){
+
+		ExternalContext ec = FacesContext.getCurrentInstance().getExternalContext();
+			try {
+				ec.redirect(ec.getRequestContextPath() + "/faces/"+xml);
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+	}
 	public static String aes_encrypt(String password) {
 		String strKey = "supinfo";
 		try {
