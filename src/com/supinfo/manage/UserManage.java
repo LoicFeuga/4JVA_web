@@ -15,6 +15,7 @@ import com.supinfo.servlet.Index;
 @RequestScoped
 public class UserManage {
 	
+	private int id;
 	private String login;
 	private String mdp;
 	private String nom;
@@ -24,10 +25,12 @@ public class UserManage {
 	InterfacesDao dao;
 	
 	public void log(){
-		System.out.println("mdp::::"+mdp);
 		mdp = Index.aes_encrypt(mdp);
 		
-		if(dao.login(login, mdp)){
+		int loged = dao.login(login, mdp);
+
+		if(loged > 0){
+			this.id = loged;
 			Index.redirect("cours.xhtml");
 		}else{
 			Index.redirect("login.xhtml");
@@ -36,7 +39,7 @@ public class UserManage {
 	
 	public void signup(){
 		mdp = Index.aes_encrypt(mdp);
-		//System.out.println("signup");
+
 		if(dao.signup(login, mdp, nom, prenom)){
 			Index.redirect("login.xhtml");
 		}
@@ -72,6 +75,14 @@ public class UserManage {
 
 	public void setPrenom(String prenom) {
 		this.prenom = prenom;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
 	}
 	
 	
