@@ -35,28 +35,8 @@
 		  
 		  <div class="container">
 			
-			<h1>Passez tous vos cours </h1>
-								<h:form>	
-									
-									
-		  	<div class="row">
-		  	
-					<ui:repeat value="#{cours.courses}" var="cour">
-					   
-			  				<div class="col s3">
-			  					<div class="cours">
-									<h:outputText value="#{cour.libelle}" />
-								</div>
-											
-									<h:commandButton value="Take cours#{cour.id}" class="btn vbutton teal lighten-3" action="#{cours.quizz}"  />	
-									
-			  				</div>
-				
-						  		
-					
-					</ui:repeat>
-		  	</div>
-		  	</h:form>
+			<h1>Passez le quizz </h1>
+			
 		  </div>
 		  
 

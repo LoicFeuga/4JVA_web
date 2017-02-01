@@ -38,6 +38,7 @@ public class CoursManage {
 
 
 	public String quizz(){
+		System.out.println("gologin");
 		return "login.xhtml";
 		
 //		FacesContext fc= FacesContext.getCurrentInstance();
