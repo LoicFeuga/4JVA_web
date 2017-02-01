@@ -36,6 +36,10 @@
 		  <div class="container">
 			
 			<h1>Passez tous vos cours </h1>
+								<h:form>	
+									<h:commandButton value="Take cours" class="btn vbutton teal lighten-3" action="#{cours.quizz}"  />	
+									
+								</h:form>
 		  	<div class="row">
 		  	
 					<ui:repeat value="#{cours.courses}" var="cour">
@@ -47,7 +51,7 @@
 												
 									
 								<h:form>	
-									<h:commandButton value="Take cours" class="btn vbutton red" action="#{cours.passQuizz}"  />
+									<h:commandButton value="Take cours" class="btn vbutton teal lighten-3" action="#{cours.quizz}"  />	
 									
 								</h:form>
 			  				</div>

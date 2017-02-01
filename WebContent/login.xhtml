@@ -16,7 +16,14 @@
 		<link rel="stylesheet" href="css/index.css"/>
 </head>
 <body>
-
+			<h:panelGroup rendered="${user.logged == 1 }">
+    			<div class="row form_signup">
+	    			Mauvaise combinaison id/password    			
+    			</div>
+    		</h:panelGroup>
+    		
+    		
+    		
 	<h:form class="row form_signup">
 		<div class="col s12">
 			<div class="row">

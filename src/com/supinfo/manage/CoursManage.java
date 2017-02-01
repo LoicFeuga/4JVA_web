@@ -32,22 +32,22 @@ public class CoursManage {
 	InterfacesDao dao;
 
 	public CoursManage(){
-		this.setLibelle("test");
 		courses = new ArrayList<Cours>();		
 			
 	}
 
 
-	public void passQuizz(String action){
+	public String quizz(){
+		return "login.xhtml";
 		
-		FacesContext fc= FacesContext.getCurrentInstance();
-	    ExternalContext context=fc.getExternalContext();
-		    
-		Map<String, String> parameterMap = (Map<String, String>) context.getRequestParameterMap();
-		
-		String param = parameterMap.get("ids");
-		
-		System.out.println("i:"+param);
+//		FacesContext fc= FacesContext.getCurrentInstance();
+//	    ExternalContext context=fc.getExternalContext();
+//		    
+//		Map<String, String> parameterMap = (Map<String, String>) context.getRequestParameterMap();
+//		
+//		String param = parameterMap.get("ids");
+//		
+//		System.out.println("i:"+param);
 
 	}
 	

@@ -21,6 +21,7 @@ import com.supinfo.servlet.Index;
 public class UserManage {
 	
 	private int id;
+	private int logged = 0;
 	private String login;
 	private String mdp;
 	private String nom;
@@ -38,11 +39,11 @@ public class UserManage {
 		if(user != null){
 			this.setId(user.getId());
 			this.setCours(user.getCours());
-			
 			return "cours.xhtml";
 		}else{
 			login ="";
 			mdp = "";
+			logged = 1;
 			return "login.xhtml";
 		}
 	}
@@ -53,7 +54,11 @@ public class UserManage {
 		if(dao.signup(login, mdp, nom, prenom)){
 			return "cours.xhtml";
 		}else{
-
+			login = "";
+			mdp = "";
+			nom ="";
+			prenom= "";
+			logged = 1;
 			return "signup.xhtml";
 		}
 	}
@@ -104,6 +109,14 @@ public class UserManage {
 
 	public void setCours(Collection<Cours> collection) {
 		this.cours = collection;
+	}
+
+	public int getLogged() {
+		return logged;
+	}
+
+	public void setLogged(int logged) {
+		this.logged = logged;
 	}
 	
 	
