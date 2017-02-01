@@ -9,6 +9,7 @@ body {
 	flex-direction:column;
 	justify-content:center;
 	background: #80cbc4;
+	height:100vh;
 }
 .info{
 	

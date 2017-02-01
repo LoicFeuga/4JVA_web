@@ -46,6 +46,7 @@ public class CoursManage {
 		Map<String, String> parameterMap = (Map<String, String>) context.getRequestParameterMap();
 		
 		String param = parameterMap.get("ids");
+		
 		System.out.println("i:"+param);
 
 	}

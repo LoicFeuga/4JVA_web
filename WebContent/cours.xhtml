@@ -37,18 +37,17 @@
 			
 			<h1>Passez tous vos cours </h1>
 		  	<div class="row">
+		  	
 					<ui:repeat value="#{cours.courses}" var="cour">
 					   
 			  				<div class="col s3">
 			  					<div class="cours">
 									<h:outputText value="#{cour.libelle}" />
 								</div>
-								
-								<h:form>					
+												
 									
-									<h:commandButton value="Take cours" class="btn vbutton red" action="#{cours.passQuizz}"  >
-										<f:param name="ids" value="#{cour.id}" />
-									</h:commandButton>
+								<h:form>	
+									<h:commandButton value="Take cours" class="btn vbutton red" action="#{cours.passQuizz}"  />
 									
 								</h:form>
 			  				</div>

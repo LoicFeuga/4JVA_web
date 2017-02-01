@@ -64,7 +64,7 @@ public class Index extends HttpServlet {
 		String action = (String) request.getParameter("action");
 
 
-			request.getRequestDispatcher("/jsp/login.jsp").forward(request, response);
+		request.getRequestDispatcher("/jsp/login.jsp").forward(request, response);
 		
 
 	}
