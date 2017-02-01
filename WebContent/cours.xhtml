@@ -4,8 +4,9 @@
 	  xmlns:h="http://java.sun.com/jsf/html"
 	  xmlns:ui="http://java.sun.com/jsf/facelets"
 	  xmlns:f="http://java.sun.com/jsf/core"
+	  xmlns:p="http://java.sun.com/jsf/core"
 	  xmlns:c="http://xmlns.jcp.org/jstl/core">
-<head>
+<h:head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	<title>Cours</title>
 	<link rel="icon" type="image/png" href="http://supinfo.com/favicon.png" />
@@ -13,8 +14,11 @@
 		<link rel="stylesheet" href="css/material-icons.css"/>
 		<link rel="stylesheet" href="css/roboto.css"/>
 		<link rel="stylesheet" href="css/courses.css"/>
-</head>
-<body>
+</h:head>
+<h:body onload="#{cours.loadCours()}">
+	
+	
+
 
 
 
@@ -23,23 +27,43 @@
 		      <a href="#" class="brand-logo center">Supinfo courses</a>
 		      <ul id="nav-mobile" class="right hide-on-med-and-down">		
 		
-				<li><a href="Index">Déconnexion</a></li>
+				<li><a href="login.xhtml">Déconnexion</a></li>
 			
 		      </ul>
 		    </div>
 		  </nav>
 		  
 		  <div class="container">
+			
+			<h1>Passez tous vos cours </h1>
 		  	<div class="row">
-		  		<div class="col s12">
-				  =<h:outputText value="${user.id}"></h:outputText >=
-		  		</div>
+					<ui:repeat value="#{cours.courses}" var="cour">
+					   
+			  				<div class="col s3">
+			  					<div class="cours">
+									<h:outputText value="#{cour.libelle}" />
+								</div>
+								
+								<h:form>					
+									
+									<h:commandButton value="Take cours" class="btn vbutton red" action="#{cours.passQuizz}"  >
+										<f:param name="ids" value="#{cour.id}" />
+									</h:commandButton>
+									
+								</h:form>
+			  				</div>
+				
+						  		
+					
+					</ui:repeat>
 		  	</div>
 		  </div>
+		  
+
 		  		
 		  
 	
 	  <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
 	  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"></script>
-</body>
+</h:body>
 </html>

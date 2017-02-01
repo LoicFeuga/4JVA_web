@@ -54,11 +54,11 @@ public class Index extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		
-		//à décommenter après car ça permet d'initialiser 
-		//if(dao.getCours().size() == 0){
-		//	dao.initCours();
-		//}
+
+
+		if(dao.getCours().size() == 0){
+			dao.initCours();
+		}
 		
 
 		String action = (String) request.getParameter("action");

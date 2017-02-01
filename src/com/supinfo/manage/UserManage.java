@@ -1,6 +1,9 @@
 package com.supinfo.manage;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
 
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
@@ -8,6 +11,8 @@ import javax.faces.bean.RequestScoped;
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 
+import com.supinfo.entity.Cours;
+import com.supinfo.entity.User;
 import com.supinfo.interfaces.InterfacesDao;
 import com.supinfo.servlet.Index;
 
@@ -20,28 +25,36 @@ public class UserManage {
 	private String mdp;
 	private String nom;
 	private String prenom;
-	
+	private Collection<Cours> cours;
+
 	@EJB
 	InterfacesDao dao;
 	
-	public void log(){
+	public String log(){
 		mdp = Index.aes_encrypt(mdp);
 		
-		int loged = dao.login(login, mdp);
+		User user = dao.login(login, mdp);
 
-		if(loged > 0){
-			this.id = loged;
-			Index.redirect("cours.xhtml");
+		if(user != null){
+			this.setId(user.getId());
+			this.setCours(user.getCours());
+			
+			return "cours.xhtml";
 		}else{
-			Index.redirect("login.xhtml");
+			login ="";
+			mdp = "";
+			return "login.xhtml";
 		}
 	}
 	
-	public void signup(){
+	public String signup(){
 		mdp = Index.aes_encrypt(mdp);
 
 		if(dao.signup(login, mdp, nom, prenom)){
-			Index.redirect("login.xhtml");
+			return "cours.xhtml";
+		}else{
+
+			return "signup.xhtml";
 		}
 	}
 
@@ -83,6 +96,14 @@ public class UserManage {
 
 	public void setId(int id) {
 		this.id = id;
+	}
+
+	public Collection<Cours> getCours() {
+		return cours;
+	}
+
+	public void setCours(Collection<Cours> collection) {
+		this.cours = collection;
 	}
 	
 	

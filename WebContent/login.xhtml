@@ -34,6 +34,7 @@
 
 			<div class="input-field col s12">
 	          <h:inputText id="mdp" value="#{user.mdp}" class="validate" />
+	          <h:message for="mdp" id="mdp_message" />
 	          <label for="mdp" style="text-align:left">Mot de passe</label>
 	        </div>
 	        
@@ -41,7 +42,7 @@
 				<h:commandButton action="#{user.log}" value="Login" class="waves-effect waves-light btn-large">	</h:commandButton>
 			</div>
 			
-			
+						  
 			<div class="row">
 				<div class="col s12">
 				<h2 class="flow-text">Pas encore de compte ?</h2>
