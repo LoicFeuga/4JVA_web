@@ -36,9 +36,9 @@
 		  <div class="container">
 			
 			<h1>Passez tous vos cours </h1>
-								<h:form>	
-									
-									
+
+									 
+
 		  	<div class="row">
 		  	
 					<ui:repeat value="#{cours.courses}" var="cour">
@@ -48,15 +48,18 @@
 									<h:outputText value="#{cour.libelle}" />
 								</div>
 											 
-									<h:commandButton value="Take cours#{cour.id}" class="btn vbutton teal lighten-3" action="#{cours.quizz}"  />	
+								<h:form>	
+									<h:commandButton value="Take cours#{cour.id}"  class="btn vbutton teal lighten-3" action="#{cours.quizz}"  >
+										<f:setPropertyActionListener value="12" target="#{cours.icours}" />
+									</h:commandButton>	
 									
+									</h:form>
 			  				</div>
 				
 						  		
 					
 					</ui:repeat>
 		  	</div>
-		  	</h:form>
 		  </div>
 		  
 

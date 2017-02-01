@@ -37,9 +37,9 @@ public class CoursManage {
 	}
 
 
-	public String quizz(){
-		System.out.println("gologin");
-		return "login.xhtml";
+	public void quizz(){
+		System.out.println(icours);
+		//return "login.xhtml";
 		
 //		FacesContext fc= FacesContext.getCurrentInstance();
 //	    ExternalContext context=fc.getExternalContext();
@@ -53,7 +53,7 @@ public class CoursManage {
 	}
 	
 	public void loadCours(){
-		System.out.println("loadCours");
+
 		courses = dao.getCours();
 	}
 
