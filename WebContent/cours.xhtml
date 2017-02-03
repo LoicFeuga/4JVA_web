@@ -7,28 +7,22 @@
 	  xmlns:p="http://java.sun.com/jsf/core"
 	  xmlns:c="http://xmlns.jcp.org/jstl/core">
 <h:head>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+   	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	<title>Cours</title>
 	<link rel="icon" type="image/png" href="http://supinfo.com/favicon.png" />
-  		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.min.css" />
-		<link rel="stylesheet" href="css/material-icons.css"/>
-		<link rel="stylesheet" href="css/roboto.css"/>
-		<link rel="stylesheet" href="css/courses.css"/>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.min.css" />
+	<link rel="stylesheet" href="css/material-icons.css"/>
+	<link rel="stylesheet" href="css/roboto.css"/>
+	<link rel="stylesheet" href="css/courses.css"/>
 </h:head>
+
 <h:body onload="#{cours.loadCours()}">
-	
-	
-
-
-
 
     	  <nav class="teal lighten-3">
 		    <div class="nav-wrapper">
 		      <a href="#" class="brand-logo center">Supinfo courses</a>
-		      <ul id="nav-mobile" class="right hide-on-med-and-down">		
-		
-				<li><a href="login.xhtml">Déconnexion</a></li>
-			
+		      <ul id="nav-mobile" class="right hide-on-med-and-down">				
+				<li><a href="login.xhtml">Déconnexion</a></li>			
 		      </ul>
 		    </div>
 		  </nav>
@@ -36,35 +30,22 @@
 		  <div class="container">
 			
 			<h1>Passez tous vos cours </h1>
-
-									 
-
-		  	<div class="row">
-		  	
-								<h:form>	
-					<h:dataTable value="#{cours.courses}" var="cour">
-					    <h:column>   
-			  				<div class="col s3">
-			  					<div class="cours">
-									<h:outputText value="#{cour.libelle}" />
-								</div>
-											 
-									<h:commandButton value="Take cours#{cour.id}"  class="btn vbutton teal lighten-3" action="#{cours.quizz}"  >
-										<f:setPropertyActionListener value="12" target="#{cours.icours}" />
-									</h:commandButton>	
-									
-			  				</div>
-				 
-						  		
-					 </h:column>   
-					</h:dataTable>
-									</h:form>
+		  	<div class="row">		  	
+				<h:form>	
+					<ui:repeat value="#{cours.courses}" var="cour">					       
+		  				<div class="col s3">
+		  					<div class="cours">
+								<h:outputText value="#{cour.libelle}" />
+							</div>											 
+							<h:commandButton value="Take cours#{cour.id}"  class="btn vbutton teal lighten-3" action="#{cours.quizz}"  >
+								<f:setPropertyActionListener value="12" target="#{cours.icours}" />
+							</h:commandButton>										
+		  				</div>
+					</ui:repeat>
+				</h:form>
 		  	</div>
+		  	
 		  </div>
-		  
-
-		  		
-		  
 	
 	  <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
 	  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"></script>
