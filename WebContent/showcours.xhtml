@@ -29,22 +29,10 @@
 		  
 		  <div class="container">
 			
-			<h1>Passez tous vos cours </h1>
+			<h1>Cours</h1>
 		  	<div class="row">		  	
-				<h:form>	
-                    <ui:repeat value="#{user.cours}" var="cour">                           
-                          <div class="col s3">
-                              <div class="cours">
-                                <h:outputText value="#{cour.libelle}" />
-                            </div>                                             
-                            <h:commandLink value="Take cours" class="btn vbutton teal lighten-3" action="#{user.showcours}"  >
-                                <f:setPropertyActionListener value="#{cour.id}" target="#{user.icours}" />
-                            </h:commandLink>                              
-                            </div>                                
-                    </ui:repeat>
-
-				</h:form>
-		  	</div>
+				<h:outputLabel value="#{user.icours}" />
+			</div>
 		  	
 		  	
 		  </div>

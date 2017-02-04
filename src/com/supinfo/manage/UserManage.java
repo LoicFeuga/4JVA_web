@@ -55,6 +55,9 @@ public class UserManage {
 		}
 	}
 
+	public String showcours(){
+		return "showcours.xhtml";
+	}
 	
 	private void loadCours(){
 		cours = dao.getCours();
