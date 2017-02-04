@@ -37,15 +37,9 @@
                               <div class="cours">
                                 <h:outputText value="#{cour.libelle}" />
                             </div>                                             
-                            <h:commandLink value="Take cours#{cour.id}" class="btn vbutton teal lighten-3" action="#{user.log}"  >
-                                <f:setPropertyActionListener value="12" target="#{user.icours}" />
-                            </h:commandLink>                              
-                            <!-- <h:commandButton value="Pass Quizz" renderer="#{cour.type} == 'passed'" class="btn vbutton teal lighten-3" action="#{user.quizz}"  >
+                            <h:commandButton value="Take cours#{cour.id}" class="btn vbutton teal lighten-3" action="#{user.log}"  >
                                 <f:setPropertyActionListener value="12" target="#{user.icours}" />
                             </h:commandButton>                              
-                            <h:commandButton value="Certif" renderer="#{cour.type} == 'certif'" class="btn vbutton teal lighten-3" action="#{user.quizz}"  >
-                                <f:setPropertyActionListener value="12" target="#{user.icours}" />
-                            </h:commandButton>     -->    
                             </div>                                
                     </ui:repeat>
 

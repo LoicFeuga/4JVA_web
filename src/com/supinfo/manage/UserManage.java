@@ -55,9 +55,6 @@ public class UserManage {
 		}
 	}
 
-	public void quizz(){
-		daoC.addCours(new Cours("Cours ","Cours ",""));		
-	}
 	
 	private void loadCours(){
 		cours = dao.getCours();
