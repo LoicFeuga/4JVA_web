@@ -11,8 +11,10 @@ import javax.faces.bean.RequestScoped;
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 
+import com.supinfo.entity.Certification;
 import com.supinfo.entity.Cours;
 import com.supinfo.entity.User;
+import com.supinfo.interfaces.ICoursesDao;
 import com.supinfo.interfaces.InterfacesDao;
 import com.supinfo.servlet.Index;
 
@@ -26,8 +28,12 @@ public class UserManage {
 	private String mdp;
 	private String nom;
 	private String prenom;
-	private Collection<Cours> cours;
+	private List<Cours> cours;
+	private int icours;
+	private User user;
 
+	@EJB
+	ICoursesDao daoC;
 	@EJB
 	InterfacesDao dao;
 	
@@ -39,6 +45,7 @@ public class UserManage {
 		if(user != null){
 			this.setId(user.getId());
 			this.setCours(user.getCours());
+			loadCours();
 			return "cours.xhtml";
 		}else{
 			login ="";
@@ -47,7 +54,49 @@ public class UserManage {
 			return "login.xhtml";
 		}
 	}
+
+	public void quizz(){
+		daoC.addCours(new Cours("Cours ","Cours ",""));		
+	}
 	
+	private void loadCours(){
+		cours = dao.getCours();
+		
+//		List<Cours> allCours = new ArrayList<Cours>();
+//		
+//		user = daoC.findUserById(id);
+//		
+//		Collection<Certification> certifications = user.getCertifications();
+//		Collection<Cours> coursesPassed = user.getCours();
+//		
+//
+//		for(Certification certif : certifications){
+//			Cours cours = certif.getCours();
+//			cours.setType("certif");
+//			allCours.add(cours);
+//		}
+//		
+//		for(Cours passed : coursesPassed){
+//			if(!allCours.contains(passed)){
+//				Cours cours = passed;
+//				cours.setType("passed");
+//				allCours.add(cours);
+//			}
+//		}
+//		
+//		for(int i = 0; i < cours.size();i++){
+//			Cours coursI = cours.get(i);
+//			
+//			if(!allCours.contains(cours)){
+//				coursI.setType("no");
+//				allCours.add(coursI);
+//			}
+//		}
+//		
+//		
+//		cours = allCours;	
+		
+	}
 	public String signup(){
 		mdp = Index.aes_encrypt(mdp);
 
@@ -108,7 +157,7 @@ public class UserManage {
 	}
 
 	public void setCours(Collection<Cours> collection) {
-		this.cours = collection;
+		this.cours = (List<Cours>) collection;
 	}
 
 	public int getLogged() {
@@ -117,6 +166,22 @@ public class UserManage {
 
 	public void setLogged(int logged) {
 		this.logged = logged;
+	}
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+
+	public int getIcours() {
+		return icours;
+	}
+
+	public void setIcours(int icours) {
+		this.icours = icours;
 	}
 	
 	

@@ -1,18 +1,25 @@
 package com.supinfo.manage;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 
+import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.RequestScoped;
+import javax.faces.bean.ViewScoped;
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 import javax.faces.event.ActionEvent;
 
+import com.supinfo.entity.Certification;
 import com.supinfo.entity.Cours;
+import com.supinfo.entity.User;
+import com.supinfo.interfaces.ICoursesDao;
+import com.supinfo.interfaces.ICoursesServices;
 import com.supinfo.interfaces.InterfacesDao;
 @ManagedBean(name="cours")
 @RequestScoped
@@ -26,34 +33,71 @@ public class CoursManage {
 	private List<Cours> courses;
 	private int icours;
 	
+	private User user;
 	
 	
 	@EJB
 	InterfacesDao dao;
+	@EJB
+	ICoursesDao daoC;
 
 	public CoursManage(){
 		courses = new ArrayList<Cours>();		
 			
 	}
-
-
-	public void quizz(){
-		System.out.println(icours);
-		//return "login.xhtml";
+	
+	public void metho(){
+		System.out.println(courses.toString());
+	}
+	
+	@PostConstruct
+	public void init(){
+		courses = dao.getCours();
 		
-//		FacesContext fc= FacesContext.getCurrentInstance();
-//	    ExternalContext context=fc.getExternalContext();
-//		    
-//		Map<String, String> parameterMap = (Map<String, String>) context.getRequestParameterMap();
-//		
-//		String param = parameterMap.get("ids");
-//		
-//		System.out.println("i:"+param);
+		List<Cours> allCours = new ArrayList<Cours>();
 
+		//
+		//int userID = userManage.getId() == 0 ? 1 : userManage.getId();
+		
+	//	user = daoC.findUserById(userID);
+		
+		Collection<Certification> certifications = user.getCertifications();
+		Collection<Cours> coursesPassed = user.getCours();
+		
+
+		for(Certification certif : certifications){
+			Cours cours = certif.getCours();
+			cours.setType("certif");
+			allCours.add(cours);
+		}
+		
+		for(Cours passed : coursesPassed){
+			if(!allCours.contains(passed)){
+				Cours cours = passed;
+				cours.setType("passed");
+				allCours.add(cours);
+			}
+		}
+		
+		for(int i = 0; i < courses.size();i++){
+			Cours cours = courses.get(i);
+			
+			if(!allCours.contains(cours)){
+				cours.setType("no");
+				allCours.add(cours);
+			}
+		}
+		
+		
+		courses = allCours;
+		
+	}
+	
+	public void quizz(){
+		daoC.addCours(new Cours("Cours "+icours,"Cours "+icours,""));		
 	}
 	
 	public void loadCours(){
-
 		courses = dao.getCours();
 	}
 
@@ -119,7 +163,15 @@ public class CoursManage {
 	public void setIcours(int icours) {
 		this.icours = icours;
 	}
-	
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+
 	
 
 }

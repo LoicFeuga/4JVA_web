@@ -6,7 +6,7 @@
 	  xmlns:f="http://java.sun.com/jsf/core"
 	  xmlns:p="http://java.sun.com/jsf/core"
 	  xmlns:c="http://xmlns.jcp.org/jstl/core">
-<h:head>
+<head>
    	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	<title>Cours</title>
 	<link rel="icon" type="image/png" href="http://supinfo.com/favicon.png" />
@@ -14,9 +14,9 @@
 	<link rel="stylesheet" href="css/material-icons.css"/>
 	<link rel="stylesheet" href="css/roboto.css"/>
 	<link rel="stylesheet" href="css/courses.css"/>
-</h:head>
+</head>
 
-<h:body onload="#{cours.loadCours()}">
+<body>
 
     	  <nav class="teal lighten-3">
 		    <div class="nav-wrapper">
@@ -32,22 +32,28 @@
 			<h1>Passez tous vos cours </h1>
 		  	<div class="row">		  	
 				<h:form>	
-					<ui:repeat value="#{cours.courses}" var="cour">					       
-		  				<div class="col s3">
-		  					<div class="cours">
-								<h:outputText value="#{cour.libelle}" />
-							</div>											 
-							<h:commandButton value="Take cours#{cour.id}"  class="btn vbutton teal lighten-3" action="#{cours.quizz}"  >
-								<f:setPropertyActionListener value="12" target="#{cours.icours}" />
-							</h:commandButton>										
-		  				</div>
-					</ui:repeat>
+                    <ui:repeat value="#{user.cours}" var="cour">                           
+                          <div class="col s3">
+                              <div class="cours">
+                                <h:outputText value="#{cour.libelle}" />
+                            </div>                                             
+                            <h:commandLink value="Take cours#{cour.id}" class="btn vbutton teal lighten-3" action="#{user.log}"  >
+                                <f:setPropertyActionListener value="12" target="#{user.icours}" />
+                            </h:commandLink>                              
+                            <!-- <h:commandButton value="Pass Quizz" renderer="#{cour.type} == 'passed'" class="btn vbutton teal lighten-3" action="#{user.quizz}"  >
+                                <f:setPropertyActionListener value="12" target="#{user.icours}" />
+                            </h:commandButton>                              
+                            <h:commandButton value="Certif" renderer="#{cour.type} == 'certif'" class="btn vbutton teal lighten-3" action="#{user.quizz}"  >
+                                <f:setPropertyActionListener value="12" target="#{user.icours}" />
+                            </h:commandButton>     -->    
+                            </div>                                
+                    </ui:repeat>
+
 				</h:form>
 		  	</div>
 		  	
 		  </div>
-	
 	  <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
 	  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"></script>
-</h:body>
+</body>
 </html>
